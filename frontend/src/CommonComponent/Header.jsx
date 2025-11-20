@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   const cartItem = useSelector((store) => store.cart.items);
-  console.log(cartItem);
   return (
     <header className="w-full py-2 px-4 flex gap-8 items-center border-b overflow-scroll noscrollbar border-gray-200 z-10 bg-white/90">
       <Link to={list[0].path}>

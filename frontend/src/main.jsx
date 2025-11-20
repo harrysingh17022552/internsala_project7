@@ -4,9 +4,35 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
-
+import Home from "./Home.jsx";
+import ProductList from "./OtherComponent/product/ProductList.jsx";
+import ProductDetails from "./OtherComponent/product/ProductDetails.jsx";
+import CategoryDetails from "./OtherComponent/category/CategoryDetails.jsx";
 const RootProvider = () => {
-  const Router = createBrowserRouter([{ path: "/", element: <App /> }]);
+  const Router = createBrowserRouter([
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "category/:category",
+          element: <CategoryDetails />,
+        },
+        {
+          path: "product/:id",
+          element: <ProductDetails />,
+        },
+        {
+          path: "products",
+          element: <ProductList />,
+        },
+      ],
+    },
+  ]);
   return <RouterProvider router={Router} />;
 };
 
