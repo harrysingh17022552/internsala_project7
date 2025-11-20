@@ -18,7 +18,7 @@ export default function ProductItemInDetail({ item }) {
     dispatch(addItem(item));
   };
   return (
-    <div className="flex flex-col gap-2 justify-between border border-gray-300 shadow-[0px_0px_10px_0px_gray_inset] rounded-md w-[100px] max-w-[150px] sm:w-[150px] sm:max-w-[200px] lg:w-[200px] lg:max-w-[250px] grow">
+    <div className="flex flex-col gap-2 justify-between border border-gray-300 shadow-[0px_0px_10px_0px_gray_inset] rounded-md w-[100px] max-w-[150px] sm:w-[150px] sm:max-w-[200px] lg:w-[180px] lg:max-w-[230px] grow">
       <Link to={`/product/${item.id}`}>
         <img
           className="w-full object-cover"
