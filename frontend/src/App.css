@@ -1,4 +1,11 @@
 @import "tailwindcss";
+.mainhead {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #469962;
+  text-shadow: 2px 2px 1px #eeae47;
+  text-align: center;
+  font-size: clamp(50px, 10vw, 90px);
+}
 @keyframes flipflop {
   0% {
     transform: rotateY(0deg);
@@ -103,4 +110,8 @@
   100% {
     transform: rotate(360deg);
   }
+}
+.noscrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
