@@ -1,12 +1,8 @@
-import { useSelector } from "react-redux";
 import ProductItemInDetail from "./ProductItemInDetail";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 
-export default function ProductList() {
-  const [allProduct, setAllProduct] = useState(
-    useSelector((store) => store.product.items)
-  );
+export default function ProductList({ allProduct }) {
   const [filteredProduct, setFilteredProduct] = useState(allProduct);
   const [searchValue, setSearchValue] = useState("");
   const handleChange = () => {

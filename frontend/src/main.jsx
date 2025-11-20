@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Home from "./Home.jsx";
-import ProductList from "./OtherComponent/product/ProductList.jsx";
+import Product from "./Product.jsx";
 import ProductDetails from "./OtherComponent/product/ProductDetails.jsx";
 import CategoryDetails from "./OtherComponent/category/CategoryDetails.jsx";
 const RootProvider = () => {
@@ -28,7 +28,7 @@ const RootProvider = () => {
         },
         {
           path: "products",
-          element: <ProductList />,
+          element: <Product />,
         },
       ],
     },

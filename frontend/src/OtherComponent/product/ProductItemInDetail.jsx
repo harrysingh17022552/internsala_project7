@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
 import { AiFillThunderbolt } from "react-icons/ai";
@@ -10,7 +11,9 @@ export default function ProductItemInDetail({ item }) {
   useEffect(() => {
     for (let i = 0; i < cartItem.length; i++) {
       const id = `addToCart/button/${cartItem[i].id}`;
-      document.getElementById(id).disabled = true;
+      if (document.getElementById(id)) {
+        document.getElementById(id).disabled = true;
+      }
     }
   }, []);
   const handleAddCart = (e, item) => {
