@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 export default function CategoryList({ item, index }) {
-  const color = ["#2b2c75", "#45985d", "#eac17d"];
+  const color = ["#eac17d", "#45985d", "#2b2c75"];
   return (
     <Link
+      style={{
+        backgroundImage:
+          index % 2 === 0
+            ? `linear-gradient(to LEFT, #000000, ${color[index % 3]})`
+            : `linear-gradient(to LEFT, ${color[index % 3]}, #000000)`,
+      }}
       to={`category/${item.toLowerCase()}`}
-      className={`p-2 rounded-xl w-[200px] h-[100px] cursor-pointer flex grow justify-center hover:scale-95 transition-all items-center border ${
-        index % 2 == 0
-          ? `bg-linear-to-r/srgb from-black to-[${color[index % 3]}]`
-          : `bg-linear-to-r/srgb from-[${color[index % 3]}] to-black`
-      }`}
+      className={`p-2 rounded-xl w-[200px] h-[100px] cursor-pointer flex grow justify-center hover:scale-95 transition-all items-center border `}
     >
       <strong className="tracking-widest text-white text-xl">
         {item.toUpperCase()}
