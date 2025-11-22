@@ -12,14 +12,20 @@ export default function Home() {
       <article className="flex flex-col gap-4 p-4">
         <h2 className="pl-2">Shop by Category</h2>
         <article className="flex gap-4 flex-wrap">
-          {[...new Set(product.map((item) => item.category))].map(
-            (item, index) => (
-              <CategoryList
-                key={`listCategory/${index}`}
-                item={item}
-                index={index}
-              />
+          {product.length > 0 ? (
+            [...new Set(product.map((item) => item.category))].map(
+              (item, index) => (
+                <CategoryList
+                  key={`listCategory/${index}`}
+                  item={item}
+                  index={index}
+                />
+              )
             )
+          ) : (
+            <strong className="text-red-500 text-center pl-4">
+              No Category Found !
+            </strong>
           )}
         </article>
       </article>
@@ -27,16 +33,22 @@ export default function Home() {
       <article className="flex flex-col gap-4 p-4">
         <h2 className="pl-2">Popular Products</h2>
         <article className="flex gap-2 flex-wrap">
-          {[...product]
-            .sort((a, b) => b.rating - a.rating)
-            .slice(0, 9)
-            .map((item, index) => (
-              <ProductItem
-                key={`popular/product/${index}`}
-                item={item}
-                index={index}
-              />
-            ))}
+          {product.length > 0 ? (
+            [...product]
+              .sort((a, b) => b.rating - a.rating)
+              .slice(0, 9)
+              .map((item, index) => (
+                <ProductItem
+                  key={`popular/product/${index}`}
+                  item={item}
+                  index={index}
+                />
+              ))
+          ) : (
+            <strong className="text-red-500 text-center pl-4">
+              No Products Found !
+            </strong>
+          )}
         </article>
       </article>
     </section>
