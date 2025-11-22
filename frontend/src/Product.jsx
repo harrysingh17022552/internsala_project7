@@ -21,5 +21,9 @@ export default function Product() {
     };
     getData();
   }, []);
-  return loader ? <Loader /> : <ProductList allProduct={allProduct} />;
+  return loader ? (
+    <Loader />
+  ) : (
+    <ProductList allProduct={allProduct}/>
+  );
 }

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
 import { AiFillThunderbolt } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { addItem } from "../../redux/slice/cartSlice";
 import { useEffect } from "react";
 import LazyImage from "../../LazyImage";
 export default function ProductItemInDetail({ item }) {
+  const handleNewMessage = useOutletContext();
   const cartItem = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -20,6 +21,7 @@ export default function ProductItemInDetail({ item }) {
   const handleAddCart = (e, item) => {
     e.currentTarget.disabled = true;
     dispatch(addItem(item));
+    handleNewMessage(`Added ${item.title.slice(0, 8)}... in Cart`);
   };
   return (
     <div className="flex flex-col gap-2 justify-between border border-gray-300 shadow-[0px_0px_10px_0px_gray_inset] rounded-md w-[100px] max-w-[150px] sm:w-[150px] sm:max-w-[200px] lg:w-[180px] lg:max-w-[230px] grow">

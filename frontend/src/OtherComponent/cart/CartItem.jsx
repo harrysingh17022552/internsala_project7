@@ -5,14 +5,12 @@ import {
   deleteCartItem,
 } from "../../redux/slice/cartSlice";
 import { useDispatch } from "react-redux";
+import { useOutletContext } from "react-router-dom";
 export default function CartItem({ item, index }) {
   const dispatch = useDispatch();
-
+  const handleNewMessage = useOutletContext();
   return (
-    <article
-      
-      className="flex justify-between gap-4 rounded-md border md:w-3/4 lg:w-1/2"
-    >
+    <article className="flex justify-between gap-4 rounded-md border md:w-3/4 lg:w-1/2">
       <div className="flex items-center">
         <img
           className="min-w-20 sm:max-w-30 sm:min-w-30 rounded-md"
@@ -29,7 +27,12 @@ export default function CartItem({ item, index }) {
           <div title="Decease Quantity" className="flex gap-2 items-center">
             <button
               className="border w-4 flex items-center text-center justify-center rounded-full text-white bg-black text-[10px] font-extrabold cursor-pointer hover:scale-110 transition-all"
-              onClick={() => dispatch(decreaseQuantity({ id: item.id }))}
+              onClick={() => {
+                if (item.quantity > 1) {
+                  dispatch(decreaseQuantity({ id: item.id }));
+                  handleNewMessage(`-1 ${item.title.slice(0, 10)}...`);
+                }
+              }}
             >
               -
             </button>
@@ -39,7 +42,10 @@ export default function CartItem({ item, index }) {
             <button
               title="Increase Quantity"
               className="border w-4 flex items-center text-center justify-center rounded-full text-white bg-black text-[10px] font-extrabold cursor-pointer hover:scale-110 transition-all"
-              onClick={() => dispatch(increaseQuantity({ id: item.id }))}
+              onClick={() => {
+                dispatch(increaseQuantity({ id: item.id }));
+                handleNewMessage(`+1 ${item.title.slice(0, 10)}...`);
+              }}
             >
               +
             </button>
@@ -53,7 +59,10 @@ export default function CartItem({ item, index }) {
       <div
         title="remove from cart"
         className="flex bg-red-500 p-2 items-center justify-center cursor-pointer"
-        onClick={() => dispatch(deleteCartItem({ id: item.id }))}
+        onClick={() => {
+          dispatch(deleteCartItem({ id: item.id }));
+          handleNewMessage(`deleted ${item.title.slice(0, 10)}...`);
+        }}
       >
         <MdDelete className="icon text-sm sm:text-xl text-white" />
       </div>

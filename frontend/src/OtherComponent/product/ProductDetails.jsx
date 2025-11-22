@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { IoPricetagSharp } from "react-icons/io5";
@@ -10,6 +10,7 @@ import Loader from "../../Loader";
 export default function ProductDetails() {
   const params = useParams();
   const dispatch = useDispatch();
+  const handleNewMessage = useOutletContext();
   // const [currentProduct, setCurrentProduct] = useState(
   //   useSelector((store) => store.product.items).filter(
   //     (item) => item.id == params.id
@@ -40,6 +41,7 @@ export default function ProductDetails() {
   const handleATC = (e, item) => {
     e.currentTarget.disabled = true;
     dispatch(addItem(item));
+    handleNewMessage(`Added ${item.title.slice(0, 8)}... in Cart`);
   };
   const [showDetails, setShowDetails] = useState(false);
   return loader ? (
