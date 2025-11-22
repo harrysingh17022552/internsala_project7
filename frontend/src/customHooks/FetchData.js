@@ -5,10 +5,6 @@ export const FetchData = async (url, method) => {
   });
   const responseData = await response.json();
   if (response.ok) {
-    window.localStorage.setItem(
-      "products",
-      JSON.stringify(responseData.products)
-    );
     return responseData;
   }
   alert("Failed to Fetch");

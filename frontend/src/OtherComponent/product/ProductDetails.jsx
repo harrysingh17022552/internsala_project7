@@ -1,27 +1,38 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { IoPricetagSharp } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { addItem } from "../../redux/slice/cartSlice";
+import { FetchData } from "../../customHooks/FetchData";
 export default function ProductDetails() {
   const params = useParams();
   const dispatch = useDispatch();
-  const [currentProduct, setCurrentProduct] = useState(
-    useSelector((store) => store.product.items).filter(
-      (item) => item.id == params.id
-    )
-  );
+  // const [currentProduct, setCurrentProduct] = useState(
+  //   useSelector((store) => store.product.items).filter(
+  //     (item) => item.id == params.id
+  //   )
+  // );
+  const [currentProduct, setCurrentProduct] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const data = await FetchData(
+        `https://dummyjson.com/products/${params.id}`,
+        "GET"
+      );
+      setCurrentProduct([data]);
+    };
+    getData();
+  }, []);
   const cartItem = useSelector((store) => store.cart.items);
   useEffect(() => {
     for (let i = 0; i < cartItem.length; i++) {
-      if (cartItem[i].id == params.id) {
+      if (cartItem[i].id == params.id && document.getElementById("detailATC")) {
         document.getElementById("detailATC").disabled = true;
       }
     }
-  }, []);
+  }, [currentProduct]);
   const handleATC = (e, item) => {
     e.currentTarget.disabled = true;
     dispatch(addItem(item));
@@ -50,7 +61,9 @@ export default function ProductDetails() {
                       key={`product/${item.id}/imageSet/${index}`}
                       src={pics}
                       alt=""
-                      className={`${index==0 && 'border'} w-12 h-12 cursor-pointer rounded-md`}
+                      className={`${
+                        index == 0 && "border"
+                      } w-12 h-12 cursor-pointer rounded-md`}
                       onClick={(e) => {
                         const curimg = document.querySelectorAll("#imagesets");
                         for (let i = 0; i < curimg.length; i++) {

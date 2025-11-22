@@ -6,7 +6,7 @@ const productSlice = createSlice({
   initialState: {
     items: window.localStorage.getItem("products")
       ? JSON.parse(window.localStorage.getItem("products"))
-      : await FetchData("https://dummyjson.com/products", "GET").then(
+      : await FetchData("https://dummyjson.com/products?limit=194", "GET").then(
           (res) => res.products
         ),
   },

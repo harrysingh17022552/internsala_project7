@@ -1,9 +1,12 @@
 import ProductItemInDetail from "./ProductItemInDetail";
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ProductList({ allProduct }) {
-  const [filteredProduct, setFilteredProduct] = useState(allProduct);
+  const [filteredProduct, setFilteredProduct] = useState([]);
+  useEffect(() => {
+    setFilteredProduct(allProduct);
+  }, [allProduct]);
   const [searchValue, setSearchValue] = useState("");
   const handleChange = () => {
     setFilteredProduct(
