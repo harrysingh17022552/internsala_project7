@@ -15,7 +15,7 @@ export default function Header() {
       </Link>
       <article className="flex gap-8 items-cente grow">
         {list.slice(1, -1).map((item, index) => (
-          <Link className="font-medium" to={item.path} key={`navlist/${index}`}>
+          <Link className="font-bold" to={item.path} key={`navlist/${index}`}>
             {item.name}
           </Link>
         ))}

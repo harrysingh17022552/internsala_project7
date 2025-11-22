@@ -24,13 +24,13 @@ export default function Slider() {
   return (
     <section className="w-full flex items-center justify-center">
       <div className="relative w-full flex items-center justify-center">
-        <div className="relative w-full h-[92vh] overflow-hidden">
+        <div className="relative w-full md:h-[92vh] overflow-hidden">
           <img
-            className="w-full h-full animate-[visibleIn_1s_ease] bg-blend-overlay"
+            className="w-full h-full object-center animate-[visibleIn_1s_ease]"
             src={slider.slides[slider.initialState]}
             alt="slider images"
           />
-          <div className="absolute top-0 w-full h-full bg-black/70"></div>
+          <div className="absolute top-0 w-full h-full bg-black/50"></div>
         </div>
         <IoIosArrowForward
           className="absolute text-4xl text-[#eeae47] right-2 bg-[#31367e] rounded-full pl-1 cursor-pointer z-10"

@@ -10,7 +10,7 @@ function App() {
       <main className="w-full flex flex-col">
         <Header />
         <Outlet />
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </Provider>
   );

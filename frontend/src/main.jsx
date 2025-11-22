@@ -8,6 +8,8 @@ import Home from "./Home.jsx";
 import Product from "./Product.jsx";
 import ProductDetails from "./OtherComponent/product/ProductDetails.jsx";
 import CategoryDetails from "./OtherComponent/category/CategoryDetails.jsx";
+import Cart from "./OtherComponent/cart/Cart.jsx";
+import PlaceOrder from "./OtherComponent/payment/PlaceOrder.jsx";
 const RootProvider = () => {
   const Router = createBrowserRouter([
     {
@@ -29,6 +31,14 @@ const RootProvider = () => {
         {
           path: "products",
           element: <Product />,
+        },
+        {
+          path: "cart",
+          element: <Cart />,
+        },
+        {
+          path: "place_order",
+          element: <PlaceOrder />,
         },
       ],
     },

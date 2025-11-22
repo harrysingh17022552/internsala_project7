@@ -30,18 +30,18 @@ export default function ProductItemInDetail({ item }) {
         />
       </Link>
       <article className="p-2 flex flex-col gap-2">
-        <h1 className="w-full text-center whitespace-nowrap overflow-hidden">
+        <h1 className="w-full text-sm lg:text-xl text-center whitespace-nowrap overflow-hidden">
           {item.title}
         </h1>
         <div className="flex flex-nowrap gap-2 justify-around">
           <button
             id={`addToCart/button/${item.id}`}
-            className="border border-gray-300 shadow-[0px_0px_5px_0px_gray_inset] rounded-md p-3 flex justify-center items-center w-[50px] grow max-w-[100px] cursor-pointer"
+            className="border border-gray-300 shadow-[0px_0px_5px_0px_gray_inset] rounded-md p-2 flex justify-center items-center w-[21px] grow max-w-[50px] md:max-w-[81px] cursor-pointer"
             onClick={(e) => handleAddCart(e, item)}
           >
             <FaShoppingBag className="icon" />
           </button>
-          <div className="border border-gray-300 shadow-[0px_0px_5px_0px_gray_inset] rounded-md p-3 flex justify-center items-center w-[50px] grow max-w-[100px] cursor-pointer">
+          <div className="border border-gray-300 shadow-[0px_0px_5px_0px_gray_inset] rounded-md p-2 flex justify-center items-center w-[21px] grow max-w-[50px] md:max-w-[81px] cursor-pointer">
             <AiFillThunderbolt className="icon" />
           </div>
         </div>
