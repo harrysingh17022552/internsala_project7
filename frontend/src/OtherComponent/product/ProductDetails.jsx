@@ -6,6 +6,7 @@ import { IoPricetagSharp } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { addItem } from "../../redux/slice/cartSlice";
 import { FetchData } from "../../customHooks/FetchData";
+import Loader from "../../Loader";
 export default function ProductDetails() {
   const params = useParams();
   const dispatch = useDispatch();
@@ -15,13 +16,16 @@ export default function ProductDetails() {
   //   )
   // );
   const [currentProduct, setCurrentProduct] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
     const getData = async () => {
+      setLoader(true);
       const data = await FetchData(
         `https://dummyjson.com/products/${params.id}`,
         "GET"
       );
       setCurrentProduct([data]);
+      setLoader(false);
     };
     getData();
   }, []);
@@ -38,7 +42,9 @@ export default function ProductDetails() {
     dispatch(addItem(item));
   };
   const [showDetails, setShowDetails] = useState(false);
-  return (
+  return loader ? (
+    <Loader />
+  ) : (
     <section className="w-full flex flex-col pt-4">
       {currentProduct.length > 0 ? (
         currentProduct.map((item) => (
@@ -104,11 +110,11 @@ export default function ProductDetails() {
               <p className="flex gap-1 items-center flex-wrap">
                 Price :
                 <span className="line-through">
-                  ₹{(item.price + item.discountPercentage / 100).toFixed(2)}
+                  ${(item.price + item.discountPercentage / 100).toFixed(2)}
                 </span>
-                <span>₹{item.price}</span>
+                <span>${item.price}</span>
                 <span className="border rounded-xl px-2 text-sm shadow-[0px_0px_15px_0px_green_inset] flex gap-1">
-                  <span>Save</span>₹
+                  <span>Save</span>$
                   {(
                     (item.price + item.discountPercentage / 100).toFixed(2) -
                     item.price

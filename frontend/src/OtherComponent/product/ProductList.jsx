@@ -23,7 +23,7 @@ export default function ProductList({ allProduct }) {
           name="search"
           id="search"
           placeholder="Search Item Here..."
-          className="w-full sm:w-1/2 lg:w-1/3 p-2 rounded-xl border border-[#30347a] text-[#efac44]"
+          className="w-full sm:w-1/2 lg:w-1/3 p-2 rounded-xl border border-[#30347a] text-[#ff9900]"
           onChange={(e) => setSearchValue(e.target.value)}
         />
         <FaSearch

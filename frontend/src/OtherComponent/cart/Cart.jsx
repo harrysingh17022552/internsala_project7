@@ -62,7 +62,7 @@ export default function Cart() {
                       </button>
                     </div>
                     <div className="flex text-[12px] items-center">
-                      <strong>₹</strong>
+                      <strong>$</strong>
                       <strong>{(item.price * item.quantity).toFixed(2)}</strong>
                     </div>
                   </div>
@@ -80,7 +80,7 @@ export default function Cart() {
           <article className="w-full fixed bottom-0 p-3 text-white font-bold md:px-8 bg-[#389b55] flex items-center justify-between">
             <p>
               # Item ({cartItem.reduce((acc, curr) => acc + curr.quantity, 0)})
-              = ₹
+              = $
               {cartItem
                 .reduce((acc, curr) => acc + curr.quantity * curr.price, 0)
                 .toFixed(2)}

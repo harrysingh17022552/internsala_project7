@@ -220,7 +220,7 @@ export default function PlaceOrder() {
               <div className="grid grow grid-cols-2 text-right">
                 <p className="pr-2 whitespace-nowrap">Total : </p>
                 <p>
-                  ₹
+                  $
                   {cartItem
                     .reduce((acc, curr) => acc + curr.quantity * curr.price, 0)
                     .toFixed(2)}
@@ -235,7 +235,7 @@ export default function PlaceOrder() {
               <div className="grid grid-cols-2 text-right py-1">
                 <p className="whitespace-nowrap">Grand Total : </p>
                 <p>
-                  ₹
+                  $
                   {(
                     cartItem.reduce(
                       (acc, curr) => acc + curr.quantity * curr.price,

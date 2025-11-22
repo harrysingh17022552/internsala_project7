@@ -1,18 +1,17 @@
 import { FaCircleLeft } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function Er404() {
+export default function CustomError() {
   const navigate = useNavigate();
+  const params = useParams();
   return (
     <section className="flex items-center justify-center w-full h-[90vh]">
       <article className="flex gap-4 items-center">
         <FaCircleLeft
           className="text-3xl text-blue-800 hover:scale-110 transition-all cursor-pointer"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/products")}
         />
-        <strong className="text-red-500 md:text-2xl">
-          404 : Path you are looking for, is not Available
-        </strong>
+        <strong className="text-red-500 md:text-2xl">{params.error}</strong>
       </article>
     </section>
   );

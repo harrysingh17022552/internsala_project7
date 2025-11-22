@@ -12,7 +12,7 @@ export default function CategoryList({ item, index }) {
       to={`category/${item.toLowerCase()}`}
       className={`p-2 px-4 rounded-xl h-[50px] max-w-fit md:w-[150px] md:h-[75px] md:max-w-[200px] cursor-pointer flex grow justify-center hover:scale-95 transition-all items-center border `}
     >
-      <strong className="tracking-widest text-white md:text-xl">
+      <strong className="tracking-widest text-white">
         {item.toUpperCase()}
       </strong>
     </Link>

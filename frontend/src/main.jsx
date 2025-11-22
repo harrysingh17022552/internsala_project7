@@ -10,6 +10,8 @@ import ProductDetails from "./OtherComponent/product/ProductDetails.jsx";
 import CategoryDetails from "./OtherComponent/category/CategoryDetails.jsx";
 import Cart from "./OtherComponent/cart/Cart.jsx";
 import PlaceOrder from "./OtherComponent/payment/PlaceOrder.jsx";
+import CustomError from "./OtherComponent/error/CustomError.jsx";
+import Er404 from "./OtherComponent/error/Er404.jsx";
 const RootProvider = () => {
   const Router = createBrowserRouter([
     {
@@ -40,7 +42,12 @@ const RootProvider = () => {
           path: "place_order",
           element: <PlaceOrder />,
         },
+        {
+          path: "custom_error/:error",
+          element: <CustomError />,
+        },
       ],
+      errorElement: <Er404 />,
     },
   ]);
   return <RouterProvider router={Router} />;
