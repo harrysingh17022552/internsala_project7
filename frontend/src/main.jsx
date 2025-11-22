@@ -1,17 +1,24 @@
 /* eslint-disable react-refresh/only-export-components */
-import { StrictMode } from "react";
+import { StrictMode, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Home from "./Home.jsx";
-import Product from "./Product.jsx";
-import ProductDetails from "./OtherComponent/product/ProductDetails.jsx";
-import CategoryDetails from "./OtherComponent/category/CategoryDetails.jsx";
-import Cart from "./OtherComponent/cart/Cart.jsx";
-import PlaceOrder from "./OtherComponent/payment/PlaceOrder.jsx";
 import CustomError from "./OtherComponent/error/CustomError.jsx";
 import Er404 from "./OtherComponent/error/Er404.jsx";
+import Loader from "./Loader.jsx";
+const Product = lazy(() => import("./Product.jsx"));
+const ProductDetails = lazy(() =>
+  import("./OtherComponent/product/ProductDetails.jsx")
+);
+const CategoryDetails = lazy(() =>
+  import("./OtherComponent/category/CategoryDetails.jsx")
+);
+const Cart = lazy(() => import("./OtherComponent/cart/Cart.jsx"));
+const PlaceOrder = lazy(() =>
+  import("./OtherComponent/payment/PlaceOrder.jsx")
+);
 const RootProvider = () => {
   const Router = createBrowserRouter([
     {
@@ -24,23 +31,43 @@ const RootProvider = () => {
         },
         {
           path: "category/:category",
-          element: <CategoryDetails />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <CategoryDetails />
+            </Suspense>
+          ),
         },
         {
           path: "product/:id",
-          element: <ProductDetails />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <ProductDetails />
+            </Suspense>
+          ),
         },
         {
           path: "products",
-          element: <Product />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Product />
+            </Suspense>
+          ),
         },
         {
           path: "cart",
-          element: <Cart />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <Cart />
+            </Suspense>
+          ),
         },
         {
           path: "place_order",
-          element: <PlaceOrder />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <PlaceOrder />
+            </Suspense>
+          ),
         },
         {
           path: "custom_error/:error",

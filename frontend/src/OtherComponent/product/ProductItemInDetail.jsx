@@ -5,6 +5,7 @@ import { AiFillThunderbolt } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../redux/slice/cartSlice";
 import { useEffect } from "react";
+import LazyImage from "../../LazyImage";
 export default function ProductItemInDetail({ item }) {
   const cartItem = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
@@ -23,11 +24,7 @@ export default function ProductItemInDetail({ item }) {
   return (
     <div className="flex flex-col gap-2 justify-between border border-gray-300 shadow-[0px_0px_10px_0px_gray_inset] rounded-md w-[100px] max-w-[150px] sm:w-[150px] sm:max-w-[200px] lg:w-[180px] lg:max-w-[230px] grow">
       <Link to={`/product/${item.id}`}>
-        <img
-          className="w-full object-cover"
-          src={item.thumbnail}
-          alt={`product/${item.id}/thumbnail`}
-        />
+        <LazyImage src={item.thumbnail} alt={`product/${item.id}/thumbnail`} />
       </Link>
       <article className="p-2 flex flex-col gap-2">
         <h1 className="w-full text-sm lg:text-xl text-center whitespace-nowrap overflow-hidden">
