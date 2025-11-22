@@ -66,7 +66,7 @@ export default function PlaceOrder() {
                 name="fname"
                 id="fname"
                 value={userInfo.first_name}
-                className="border border-gray-200 p-2 rounded-xl w-full"
+                className="border border-gray-400 p-2 rounded-xl w-full"
                 required
                 autoComplete="on"
                 onChange={(e) =>
@@ -89,7 +89,7 @@ export default function PlaceOrder() {
                 name="lname"
                 id="lname"
                 value={userInfo.last_name}
-                className="border border-gray-200 p-2 rounded-xl w-full"
+                className="border border-gray-400 p-2 rounded-xl w-full"
                 required
                 autoComplete="on"
                 onChange={(e) =>
@@ -114,7 +114,7 @@ export default function PlaceOrder() {
                 name="email"
                 id="email"
                 value={userInfo.email}
-                className="border border-gray-200 p-2 rounded-xl w-full"
+                className="border border-gray-400 p-2 rounded-xl w-full"
                 required
                 autoComplete="on"
                 onChange={(e) =>
@@ -137,7 +137,7 @@ export default function PlaceOrder() {
                 name="mobile"
                 id="mobile"
                 value={userInfo.mobile_no}
-                className="border border-gray-200 p-2 rounded-xl w-full"
+                className="border border-gray-400 p-2 rounded-xl w-full"
                 required
                 autoComplete="on"
                 onChange={(e) =>
@@ -161,7 +161,7 @@ export default function PlaceOrder() {
               name="address"
               id="address"
               value={userInfo.address}
-              className="border border-gray-200 p-2 rounded-xl w-full"
+              className="border border-gray-400 p-2 rounded-xl w-full"
               required
               autoComplete="on"
               onChange={(e) =>
@@ -179,7 +179,7 @@ export default function PlaceOrder() {
             <textarea
               name="message"
               id="message"
-              className="border border-gray-200 p-2 rounded-xl w-full"
+              className="border border-gray-400 p-2 rounded-xl w-full"
               autoComplete="on"
             ></textarea>
           </div>
