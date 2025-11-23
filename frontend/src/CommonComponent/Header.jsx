@@ -10,9 +10,11 @@ export default function Header({ screenSize }) {
   const NavRef = useRef(null);
   //useEffect to change navbar style whenever it is clicked or its state changes
   useEffect(() => {
-    openNav
-      ? NavRef.current.classList.add("myNav")
-      : NavRef.current.classList.remove("myNav");
+    if (NavRef.current) {
+      openNav
+        ? NavRef.current.classList.add("myNav")
+        : NavRef.current.classList.remove("myNav");
+    }
   }, [openNav]);
   //cartItem is taken from store, to get length of item in the cart
   const cartItem = useSelector((store) => store.cart.items);
