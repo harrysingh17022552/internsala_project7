@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import Slider from "./OtherComponent/Slider.jsx";
-import CategoryList from "./OtherComponent/category/categoryList.jsx";
+import CategoryList from "./OtherComponent/category/CategoryList.jsx";
 import ProductItem from "./OtherComponent/product/ProductItem.jsx";
 export default function Home() {
   //Normal Home Component that have one slider, listed all category and list all popular products which is sorted w.r.t rating
