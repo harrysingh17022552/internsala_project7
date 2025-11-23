@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LazyImage from "../../LazyImage";
+import LazyImage from "../../LazyImage.jsx";
 export default function ProductItem({ item, index }) {
   //this component use lazyimage component for image lazy load
   // without add to cart and buy now button, and on click product will take them to their detail page

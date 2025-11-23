@@ -5,7 +5,7 @@ import { AiFillThunderbolt } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../redux/slice/cartSlice";
 import { useEffect } from "react";
-import LazyImage from "../../LazyImage";
+import LazyImage from "../../LazyImage.jsx";
 export default function ProductItemInDetail({ item }) {
   // for popup message
   const handleNewMessage = useOutletContext();

@@ -1,13 +1,13 @@
 //This Component is parent of Product List Component, it fetch the data from the url and pass it to the product list as a props
 
 // import { useSelector } from "react-redux";
-import ProductList from "./OtherComponent/product/ProductList";
+import ProductList from "./OtherComponent/product/ProductList.jsx";
 import { useEffect, useState } from "react";
 
 //Created a custom hook to fetch data
 import { FetchData } from "./customHooks/FetchData";
 //Loader until data fetch
-import Loader from "./Loader";
+import Loader from "./Loader.jsx";
 export default function Product() {
   // const [allProduct, setAllProduct] = useState(
   //   useSelector((store) => store.product.items)

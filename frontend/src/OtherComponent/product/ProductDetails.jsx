@@ -6,7 +6,7 @@ import { IoPricetagSharp } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { addItem } from "../../redux/slice/cartSlice";
 import { FetchData } from "../../customHooks/FetchData";
-import Loader from "../../Loader";
+import Loader from "../../Loader.jsx";
 export default function ProductDetails() {
   // to get id from url
   const params = useParams();
