@@ -5,9 +5,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Home from "./Home.jsx";
-import CustomError from "./OtherComponent/error/CustomError.jsx";
-import Er404 from "./OtherComponent/error/Er404.jsx";
+import CustomError from "./OtherComponent/errorCompo/CustomError.js";
 import Loader from "./Loader.jsx";
+import Er404 from "./OtherComponent/errorCompo/Er404.jsx";
 
 //Applied Lazy Loading for all that component that doesn't requires to load immediately, when user visit home page
 const Product = lazy(() => import("./Product.jsx"));

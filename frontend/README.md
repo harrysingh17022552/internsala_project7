@@ -1,16 +1,19 @@
-# React + Vite
+## TO-DO List : React Assignment - Module 5
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project setup
 
-Currently, two official plugins are available:
+1. unzip file, go to frontend folder.
+2. folder don't contain node modules, so just run,
+   npm install command
+3. After successful installation start server using command
+   npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# PRoject Requirement
 
-## React Compiler
+To Check the functionality and logics covered, please visit attached pdf.
+All the requirement and Component are component, Component name might be different
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Links
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Github : https://github.com/harrysingh17022552/internsala_project7
+Deployed at : https://mystore8472.vercel.app/
