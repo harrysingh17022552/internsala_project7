@@ -137,3 +137,20 @@ button:disabled {
   animation: rotate 0.5s linear 0s infinite normal none;
   mix-blend-mode: color;
 }
+
+.myNav {
+  #second {
+    display: none;
+  }
+  #first,
+  #second {
+    position: absolute;
+    width: 100%;
+  }
+  #first {
+    transform: rotate(45deg);
+  }
+  #third {
+    transform: rotate(-45deg);
+  }
+}
