@@ -44,7 +44,7 @@ function App() {
       <main className="relative w-full flex flex-col">
         <p
           ref={popRef}
-          className="hidden fixed w-fit items-center py-1 px-6 rounded-r-xl animate-[fromLeft_0.5s_ease] text-white font-bold z-50 top-0 h-9 bg-blue-800"
+          className="hidden fixed w-fit items-center py-1 px-6 rounded-r-xl animate-[fromLeft_0.5s_ease] text-white font-bold z-50 top-0 h-9 bg-[#389b55]"
         ></p>
         <Header />
         <Outlet context={handleNewMessage} />

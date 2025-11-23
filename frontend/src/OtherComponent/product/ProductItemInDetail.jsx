@@ -24,7 +24,7 @@ export default function ProductItemInDetail({ item }) {
     handleNewMessage(`Added ${item.title.slice(0, 8)}... in Cart`);
   };
   return (
-    <div className="flex flex-col gap-2 justify-between border border-gray-300 shadow-[0px_0px_10px_0px_gray_inset] rounded-md w-[100px] max-w-[150px] sm:w-[150px] sm:max-w-[200px] lg:w-[180px] lg:max-w-[230px] grow">
+    <div className="flex flex-col gap-2 justify-between border border-gray-300 shadow-[0px_0px_5px_0px_#4aaa5c_inset] rounded-md w-[100px] max-w-[150px] sm:w-[150px] sm:max-w-[200px] lg:w-[180px] lg:max-w-[230px] grow">
       <Link to={`/product/${item.id}`}>
         <LazyImage src={item.thumbnail} alt={`product/${item.id}/thumbnail`} />
       </Link>
@@ -35,12 +35,12 @@ export default function ProductItemInDetail({ item }) {
         <div className="flex flex-nowrap gap-2 justify-around">
           <button
             id={`addToCart/button/${item.id}`}
-            className="border border-gray-300 shadow-[0px_0px_5px_0px_gray_inset] rounded-md p-2 flex justify-center items-center w-[21px] grow max-w-[50px] md:max-w-[81px] cursor-pointer"
+            className="border border-gray-300 shadow-[0px_0px_5px_0px_#efac44_inset] rounded-md p-2 flex justify-center items-center w-[21px] grow max-w-[50px] md:max-w-[81px] cursor-pointer hover:scale-80 transition-all duration-500"
             onClick={(e) => handleAddCart(e, item)}
           >
             <FaShoppingBag className="icon" />
           </button>
-          <div className="border border-gray-300 shadow-[0px_0px_5px_0px_gray_inset] rounded-md p-2 flex justify-center items-center w-[21px] grow max-w-[50px] md:max-w-[81px] cursor-pointer">
+          <div className="border border-gray-300 shadow-[0px_0px_5px_0px_#efac44_inset] rounded-md p-2 flex justify-center items-center w-[21px] grow max-w-[50px] md:max-w-[81px] cursor-pointer hover:scale-80 transition-all duration-500">
             <AiFillThunderbolt className="icon" />
           </div>
         </div>

@@ -4,8 +4,8 @@ import { FetchData } from "../../customHooks/FetchData";
 const productSlice = createSlice({
   name: "products",
   initialState: {
-    items: window.localStorage.getItem("products")
-      ? JSON.parse(window.localStorage.getItem("products"))
+    items: window.localStorage.getItem("myStoreProducts")
+      ? JSON.parse(window.localStorage.getItem("Products"))
       : await FetchData("https://dummyjson.com/products?limit=194", "GET").then(
           (res) => res.products
         ),
