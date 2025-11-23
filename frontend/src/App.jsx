@@ -7,6 +7,21 @@ import Header from "./CommonComponent/Header";
 import Footer from "./CommonComponent/Footer";
 import { useEffect, useRef, useState } from "react";
 function App() {
+  const [screenSize, setScreenSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const [messageQueue, setMessageQueue] = useState([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const popRef = useRef(null);
@@ -39,6 +54,7 @@ function App() {
       }
     }
   }, [messageQueue, isProcessing]);
+
   return (
     <Provider store={myStore}>
       <main className="relative w-full flex flex-col">
@@ -46,7 +62,7 @@ function App() {
           ref={popRef}
           className="hidden fixed w-fit items-center py-1 px-6 rounded-r-xl animate-[fromLeft_0.5s_ease] text-white font-bold z-50 top-0 h-9 bg-[#389b55]"
         ></p>
-        <Header />
+        <Header screenSize={screenSize} />
         <Outlet context={handleNewMessage} />
         {/* <Footer /> */}
       </main>

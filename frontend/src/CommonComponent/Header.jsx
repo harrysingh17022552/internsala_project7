@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { list } from "../assets/myFunc/navlist";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ screenSize }) {
   const cartItem = useSelector((store) => store.cart.items);
   return (
     <header className="sticky top-0 w-full py-2 px-4 flex gap-8 items-center border-b overflow-scroll noscrollbar border-gray-200 z-40 bg-white">
