@@ -8,7 +8,9 @@ import { useDispatch } from "react-redux";
 import { useOutletContext } from "react-router-dom";
 export default function CartItem({ item, index }) {
   const dispatch = useDispatch();
+  //to handle popup message
   const handleNewMessage = useOutletContext();
+  // A CartItem component that have product image, name, description, quantity with increase and decrease feature and delete button
   return (
     <article className="flex justify-between gap-4 rounded-md border md:w-3/4 lg:w-1/2">
       <div className="flex items-center">
@@ -27,6 +29,7 @@ export default function CartItem({ item, index }) {
           <div title="Decease Quantity" className="flex gap-2 items-center">
             <button
               className="border w-4 flex items-center text-center justify-center rounded-full text-white bg-black text-[10px] font-extrabold cursor-pointer hover:scale-110 transition-all"
+              // dispatch the action with payload id, which then perform the action and decrease product quantity, min quantity can be 1 and cannot be go more down
               onClick={() => {
                 if (item.quantity > 1) {
                   dispatch(decreaseQuantity({ id: item.id }));
@@ -42,6 +45,7 @@ export default function CartItem({ item, index }) {
             <button
               title="Increase Quantity"
               className="border w-4 flex items-center text-center justify-center rounded-full text-white bg-black text-[10px] font-extrabold cursor-pointer hover:scale-110 transition-all"
+              // dispatch the action with payload id, which then perform the action and increase product quantity
               onClick={() => {
                 dispatch(increaseQuantity({ id: item.id }));
                 handleNewMessage(`+1 ${item.title.slice(0, 10)}...`);
@@ -59,6 +63,7 @@ export default function CartItem({ item, index }) {
       <div
         title="remove from cart"
         className="flex bg-red-500 p-2 items-center justify-center cursor-pointer"
+        // dispatch the action with payload id, which then perform the action and delete product from cart
         onClick={() => {
           dispatch(deleteCartItem({ id: item.id }));
           handleNewMessage(`deleted ${item.title.slice(0, 10)}...`);

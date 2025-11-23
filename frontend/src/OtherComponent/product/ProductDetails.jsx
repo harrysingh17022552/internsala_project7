@@ -8,6 +8,7 @@ import { addItem } from "../../redux/slice/cartSlice";
 import { FetchData } from "../../customHooks/FetchData";
 import Loader from "../../Loader";
 export default function ProductDetails() {
+  // to get id from url
   const params = useParams();
   const dispatch = useDispatch();
   const handleNewMessage = useOutletContext();
@@ -16,8 +17,10 @@ export default function ProductDetails() {
   //     (item) => item.id == params.id
   //   )
   // );
-  const [currentProduct, setCurrentProduct] = useState([]);
   const [loader, setLoader] = useState(false);
+
+  //state and useEffect for item that will be fetched by passing id in it
+  const [currentProduct, setCurrentProduct] = useState([]);
   useEffect(() => {
     const getData = async () => {
       setLoader(true);
@@ -30,6 +33,8 @@ export default function ProductDetails() {
     };
     getData();
   }, []);
+
+  // get cartItem from redux store and make button disable for item, if it is in cart, this will prevent from duplicates in cart item array
   const cartItem = useSelector((store) => store.cart.items);
   useEffect(() => {
     for (let i = 0; i < cartItem.length; i++) {
@@ -38,6 +43,9 @@ export default function ProductDetails() {
       }
     }
   }, [currentProduct]);
+
+  // this function uses action and dispatch to dispatch this action with current payload to the redux store
+  // this add the item to the cart
   const handleATC = (e, item) => {
     e.currentTarget.disabled = true;
     dispatch(addItem(item));
@@ -47,6 +55,11 @@ export default function ProductDetails() {
   return loader ? (
     <Loader />
   ) : (
+    // this component map image, price, tags, discount, product more details and feedback
+    //if product have more than one images, it map them in separate banner where they can switch to images of that product
+    //user can also add item to cart from here.
+    // there is toggle to see more detail and less detail of the product
+    // all rating of this product is mapped below with user name, email id and posted date
     <section className="w-full flex flex-col pt-4">
       {currentProduct.length > 0 ? (
         currentProduct.map((item) => (

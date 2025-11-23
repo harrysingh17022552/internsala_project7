@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { FetchData } from "../../customHooks/FetchData";
 
+//product slice , whose initial value is items fetched from url, we also used local storage here but not currently using, so it will always takes the item by fetching
 const productSlice = createSlice({
   name: "products",
   initialState: {
@@ -11,6 +12,7 @@ const productSlice = createSlice({
         ),
   },
   reducers: {
+    //currently no use, but designed to add new item, which push the new item in existing array
     addItem: (state, action) => {
       state.items.push(action.payload);
     },

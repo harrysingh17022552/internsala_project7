@@ -8,6 +8,8 @@ import Home from "./Home.jsx";
 import CustomError from "./OtherComponent/error/CustomError.jsx";
 import Er404 from "./OtherComponent/error/Er404.jsx";
 import Loader from "./Loader.jsx";
+
+//Applied Lazy Loading for all that component that doesn't requires to load immediately, when user visit home page
 const Product = lazy(() => import("./Product.jsx"));
 const ProductDetails = lazy(() =>
   import("./OtherComponent/product/ProductDetails.jsx")
@@ -17,8 +19,12 @@ const CategoryDetails = lazy(() =>
 );
 const Cart = lazy(() => import("./OtherComponent/cart/Cart.jsx"));
 const PlaceOrder = lazy(() =>
-  import("./OtherComponent/payment/PlaceOrder.jsx")
+  import("./OtherComponent/checkout/PlaceOrder.jsx")
 );
+
+//Creating root provider, that render the page as per url segments, some component are the children that share common component of their parents using Outlet,
+// here error is managed for both the cases either page is not found and when frontend unable to fetch data
+// & lazy component are manged with suspense which takes loader component to fulfill delay
 const RootProvider = () => {
   const Router = createBrowserRouter([
     {

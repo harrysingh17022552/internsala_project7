@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import CartItem from "./CartItem";
 export default function Cart() {
   const navigate = useNavigate();
+  //get all items from the cart
   const cartItem = useSelector((store) => store.cart.items);
+  // this component list that items here and get total price of this items and button to place order, grand total of item will be done on next step
   return (
     <section className="relative flex w-full h-full gap-8 pt-4 flex-col">
       <h2 className="self-center font-bold ">Cart Item's</h2>

@@ -4,15 +4,21 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 export default function Header({ screenSize }) {
+  // state that manage the navbar icon, when to show and when to not
   const [openNav, setOpenNav] = useState(false);
+  // for navbar icon transition
   const NavRef = useRef(null);
+  //useEffect to change navbar style whenever it is clicked or its state changes
   useEffect(() => {
     openNav
       ? NavRef.current.classList.add("myNav")
       : NavRef.current.classList.remove("myNav");
   }, [openNav]);
+  //cartItem is taken from store, to get length of item in the cart
   const cartItem = useSelector((store) => store.cart.items);
   return (
+    //This component list all menu item from navlist along with cart that carry's the number, that shows length of cart.
+    //Header changes its style w.r.t screenSize
     <header className="sticky top-0 w-full py-2 px-4 flex gap-8 items-center justify-between border-b border-gray-200 z-40 bg-white">
       <>
         {/* three lines */}

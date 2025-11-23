@@ -1,3 +1,6 @@
+//custom fetch hook that fetch data from url using fetch method and if response is ok it returns the data
+// and if response is not ok it redirect user to error page with error message
+
 export const FetchData = async (url, method) => {
   try {
     const response = await fetch(url, {

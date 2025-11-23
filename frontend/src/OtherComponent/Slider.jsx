@@ -5,10 +5,13 @@ import slider3 from "../assets/images/slider3.jpg";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 export default function Slider() {
+  // states that store current index all images of slider
   const [slider, setSlider] = useState({
     initialState: 0,
     slides: [slider1, slider2, slider3],
   });
+
+  //starts on reload and continue till infinite, used setInterval for time switching and cleanup function to delete previous time interval
   useEffect(() => {
     const intid = setInterval(() => {
       setSlider((prev) => ({
@@ -21,6 +24,8 @@ export default function Slider() {
     }, 5000);
     return () => clearInterval(intid);
   }, []);
+
+  //slider component for home page
   return (
     <section className="w-full flex items-center justify-center">
       <div className="relative w-full flex items-center justify-center">

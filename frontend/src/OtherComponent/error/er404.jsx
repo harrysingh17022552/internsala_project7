@@ -1,6 +1,7 @@
 import { FaCircleLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
+// Error boundary component for any unknown path
 export default function Er404() {
   const navigate = useNavigate();
   return (

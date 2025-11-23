@@ -1,6 +1,8 @@
 import { FaCircleLeft } from "react-icons/fa6";
 import { useNavigate, useParams } from "react-router-dom";
 
+
+//this takes error message from url and use it in component, so that user can see the error
 export default function CustomError() {
   const navigate = useNavigate();
   const params = useParams();

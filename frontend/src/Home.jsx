@@ -3,12 +3,14 @@ import Slider from "./OtherComponent/Slider";
 import CategoryList from "./OtherComponent/category/categoryList";
 import ProductItem from "./OtherComponent/product/ProductItem";
 export default function Home() {
+  //Normal Home Component that have one slider, listed all category and list all popular products which is sorted w.r.t rating
   const product = useSelector((store) => store.product.items);
   return (
     <section className="flex flex-col gap-8 w-full">
       {/* slider */}
       <Slider />
       {/* Shop by category */}
+      {/* filter all category from the array of products, now there will be duplicate, so used 'SET' to removed duplicates from it and then listed all unique categories */}
       <article className="flex flex-col gap-4 p-4">
         <h2 className="pl-2">Shop by Category</h2>
         <article className="flex gap-4 flex-wrap">
@@ -30,6 +32,8 @@ export default function Home() {
         </article>
       </article>
       {/* shop by popularity */}
+
+      {/* sorted over rating */}
       <article className="flex flex-col gap-4 p-4">
         <h2 className="pl-2">Popular Products</h2>
         <article className="flex gap-2 flex-wrap">

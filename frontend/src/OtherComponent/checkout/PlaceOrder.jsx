@@ -5,11 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { flushCart } from "../../redux/slice/cartSlice";
 import { addUserInfo } from "../../redux/slice/userSlice";
 export default function PlaceOrder() {
+  //got cart item from the redux store
   const cartItem = useSelector((store) => store.cart.items);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  //to handle input validation error
   const errorRef = useRef(null);
+
+  //get user info redux store
   const getUserInfo = useSelector((store) => store.user.userInfo);
+  //if there is userinfo it will assign to this state, otherwise it will create initial object to store user info
   const [userInfo, setUserInfo] = useState(
     getUserInfo
       ? getUserInfo
@@ -21,11 +26,14 @@ export default function PlaceOrder() {
           address: "",
         }
   );
+  //send direct user product page
   useEffect(() => {
     if (cartItem.length <= 0) {
       navigate("/products");
     }
   }, []);
+
+  //this function validates all input field, some with regex and some with length, after successful validation userinfo is stored in redux store and cart item is flushed by action dispatch from redux store reducer, on successful purchase user is navigates to the product list page
   const handleProceed = () => {
     const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const MOBILE_REGEX = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
@@ -49,6 +57,9 @@ export default function PlaceOrder() {
       navigate("/products");
     }
   };
+
+  //this component is divided in two parts one is form to take user info and second that list the item user wants to purchase and update the grand total by adding CGST and SGST in their original price.
+  // and after filling all mandatory fields and validation checks, it makes order and send user to the product page
   return (
     <section className="flex flex-col items-center w-full p-4 gap-8">
       <article className="flex flex-wrap md:flex-nowrap justify-center gap-20 pt-12">

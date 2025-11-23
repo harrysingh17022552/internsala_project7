@@ -7,9 +7,13 @@ import { addItem } from "../../redux/slice/cartSlice";
 import { useEffect } from "react";
 import LazyImage from "../../LazyImage";
 export default function ProductItemInDetail({ item }) {
+  // for popup message
   const handleNewMessage = useOutletContext();
-  const cartItem = useSelector((store) => store.cart.items);
+
   const dispatch = useDispatch();
+
+  // get cartItem from redux store and make button disable for every that item which is in cart, this will prevent from duplicates in cart item array
+  const cartItem = useSelector((store) => store.cart.items);
   useEffect(() => {
     for (let i = 0; i < cartItem.length; i++) {
       const id = `addToCart/button/${cartItem[i].id}`;
@@ -18,11 +22,18 @@ export default function ProductItemInDetail({ item }) {
       }
     }
   }, []);
+
+  // this function uses action and dispatch to dispatch this action with current payload to the redux store
+  // this add the item to the cart
   const handleAddCart = (e, item) => {
+    // disable add to cart button after 1st click to prevent it from repetition
     e.currentTarget.disabled = true;
     dispatch(addItem(item));
     handleNewMessage(`Added ${item.title.slice(0, 8)}... in Cart`);
   };
+
+  //this component use lazyimage component for image lazy load
+  // and every product have add to cart and buy now button, and on click product will take them to their detail page
   return (
     <div className="flex flex-col gap-2 justify-between border border-gray-300 shadow-[0px_0px_5px_0px_#4aaa5c_inset] rounded-md w-[100px] max-w-[150px] sm:w-[150px] sm:max-w-[200px] lg:w-[180px] lg:max-w-[230px] grow">
       <Link to={`/product/${item.id}`}>
