@@ -57,7 +57,7 @@ export default function ProductDetails() {
             <article className="px-4 space-y-3">
               <div className="flex flex-col gap-2 float-left">
                 <img
-                  className="w-[300px] float-left hover:scale-200 transition-all"
+                  className="w-[300px] float-left hover:scale-200 transition-all duration-1000 z-10"
                   src={item.images[0]}
                   alt={`product/image/${item.id}`}
                 />
