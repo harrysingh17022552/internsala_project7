@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Home from "./Home.jsx";
-import CustomError from "./OtherComponent/errorCompo/CustomError.js";
+import CustomError from "./OtherComponent/errorCompo/CustomError.jsx";
 import Loader from "./Loader.jsx";
 import Er404 from "./OtherComponent/errorCompo/Er404.jsx";
 
