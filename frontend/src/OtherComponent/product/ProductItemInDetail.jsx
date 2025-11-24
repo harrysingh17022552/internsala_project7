@@ -37,12 +37,13 @@ export default function ProductItemInDetail({ item }) {
   return (
     <div className="flex flex-col gap-2 justify-between border border-gray-300 shadow-[0px_0px_5px_0px_#4aaa5c_inset] rounded-md w-[100px] max-w-[150px] sm:w-[150px] sm:max-w-[200px] lg:w-[180px] lg:max-w-[230px] grow">
       <Link to={`/product/${item.id}`}>
-        <LazyImage src={item.thumbnail} alt={`product/${item.id}/thumbnail`} />
+        <LazyImage className='p-2' src={item.thumbnail} alt={`product/${item.id}/thumbnail`} />
       </Link>
       <article className="p-2 flex flex-col gap-2">
-        <h1 className="w-full text-sm lg:text-xl text-center whitespace-nowrap overflow-hidden">
+        <h3 className="w-full text-sm lg:text-[16px] text-center whitespace-nowrap overflow-hidden">
           {item.title}
-        </h1>
+        </h3>
+        <i className="text-sm lg:text-[16px] text-center whitespace-nowrap">$ {item.price}</i>
         <div className="flex flex-nowrap gap-2 justify-around">
           <button
             id={`addToCart/button/${item.id}`}

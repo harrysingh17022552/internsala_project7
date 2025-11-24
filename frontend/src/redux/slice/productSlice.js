@@ -10,13 +10,30 @@ const productSlice = createSlice({
       : await FetchData("https://dummyjson.com/products?limit=194", "GET").then(
           (res) => res.products
         ),
+    filterItems: [],
   },
   reducers: {
     //currently no use, but designed to add new item, which push the new item in existing array
     addItem: (state, action) => {
       state.items.push(action.payload);
     },
+
+    //this reducer stores the item that are searched initially with all items
+    filterItem: (state, action) => {
+      if (typeof action.payload.key == "object") {
+        state.filterItems = action.payload.key;
+      } else if (typeof action.payload.key == "string") {
+        state.filterItems = state.items.filter(
+          (item) =>
+            item.title
+              .toLowerCase()
+              .includes(action.payload.key.toLowerCase()) ||
+            item.tags.includes(action.payload.key.toLowerCase()) ||
+            item.category.includes(action.payload.key.toLowerCase())
+        );
+      }
+    },
   },
 });
-export const { addItem } = productSlice.actions;
+export const { addItem, filterItem } = productSlice.actions;
 export default productSlice.reducer;

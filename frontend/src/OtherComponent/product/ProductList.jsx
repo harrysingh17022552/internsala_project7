@@ -1,25 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import ProductItemInDetail from "./ProductItemInDetail";
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { filterItem } from "../../redux/slice/productSlice";
 export default function ProductList({ allProduct }) {
-  // main state, that keeps the product, initially it have all product, but whenever user search, it will update according search payload
-  const [filteredProduct, setFilteredProduct] = useState([]);
+  const dispatch = useDispatch();
+  const getAllProduct = useSelector((store) => store.product.filterItems);
 
   // assigning fetch data from its parent to filter product state
   useEffect(() => {
-    setFilteredProduct(allProduct);
+    dispatch(filterItem({ key: allProduct }));
   }, [allProduct]);
 
   // state that store the search payload here
   const [searchValue, setSearchValue] = useState("");
-  // use search payload and update the main product state, this function checks the payload with each item title and store it in main product state
-  const handleChange = () => {
-    setFilteredProduct(
-      allProduct.filter((item) =>
-        item.title.toLowerCase().includes(searchValue.toLowerCase())
-      )
-    );
+  // use search payload and update the main product state, this function checks the payload with each item title and store it in main product state in redux store
+  const handleChange = (key) => {
+    dispatch(filterItem({ key }));
   };
   return (
     <section className="w-full flex flex-col gap-8">
@@ -35,14 +33,14 @@ export default function ProductList({ allProduct }) {
         />
         <FaSearch
           className="icon text-2xl text-[#389952]"
-          onClick={handleChange}
+          onClick={() => handleChange(searchValue)}
         />
       </article>
 
       {/* map all product based on search payload here */}
       <article className="flex gap-4 flex-wrap p-4">
-        {filteredProduct.length > 0 ? (
-          filteredProduct.map((item, index) => (
+        {getAllProduct.length > 0 ? (
+          getAllProduct.map((item, index) => (
             <ProductItemInDetail key={`product/${index}`} item={item} />
           ))
         ) : (

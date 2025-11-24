@@ -11,7 +11,11 @@
 # PRoject Requirement
 
 To Check the functionality and logics covered, please visit attached pdf.
-All the requirement and Component are component, Component name might be different
+All the requirement and Component are completed, Component name might be different
+
+# Note
+
+The Cart Item only shows the unique item in carts, number of total items with repetition will be shown in cart page and also while checkout, this is because according to me showing unique items added to cart is more better than showing how many quantity added
 
 # Links
 

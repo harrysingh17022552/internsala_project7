@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { IoMdHome } from "react-icons/io";
+
 import CartItem from "./CartItem";
 export default function Cart() {
   const navigate = useNavigate();
@@ -7,11 +9,17 @@ export default function Cart() {
   const cartItem = useSelector((store) => store.cart.items);
   // this component list that items here and get total price of this items and button to place order, grand total of item will be done on next step
   return (
-    <section className="relative flex w-full h-full gap-8 pt-4 flex-col">
-      <h2 className="self-center font-bold ">Cart Item's</h2>
+    <section className="relative flex w-full h-full pt-4 flex-col">
+      <h2 className="self-center font-bold flex gap-2 items-center">
+        <IoMdHome
+          className="text-4xl mb-2 text-[#454c82] cursor-pointer"
+          onClick={() => navigate("/")}
+        />
+        Cart Item's
+      </h2>
       {cartItem.length > 0 ? (
         <>
-          <article className="p-4 flex flex-col md:items-center gap-4">
+          <article className="p-4 flex flex-col md:items-center gap-4 pb-24">
             {cartItem.map((item, index) => (
               <CartItem key={`cart/item/${index}`} item={item} index={index} />
             ))}

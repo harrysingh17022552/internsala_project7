@@ -1,13 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useOutletContext, useParams } from "react-router-dom";
+import { useOutletContext, useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { IoPricetagSharp } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { FaArrowLeft } from "react-icons/fa";
 import { addItem } from "../../redux/slice/cartSlice";
 import { FetchData } from "../../customHooks/FetchData";
 import Loader from "../../Loader.jsx";
 export default function ProductDetails() {
+  const navigate = useNavigate();
   // to get id from url
   const params = useParams();
   const dispatch = useDispatch();
@@ -60,7 +62,7 @@ export default function ProductDetails() {
     //user can also add item to cart from here.
     // there is toggle to see more detail and less detail of the product
     // all rating of this product is mapped below with user name, email id and posted date
-    <section className="w-full flex flex-col pt-4">
+    <section className="relative w-full flex flex-col pt-4">
       {currentProduct.length > 0 ? (
         currentProduct.map((item) => (
           <article
@@ -215,6 +217,11 @@ export default function ProductDetails() {
           No Such Product Found !
         </strong>
       )}
+      <FaArrowLeft
+        title="go back"
+        className="text-3xl text-[#454c82] absolute z-40 top-4 left-4 cursor-pointer"
+        onClick={() => navigate(-1)}
+      />
     </section>
   );
 }
