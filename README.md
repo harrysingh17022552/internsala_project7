@@ -1,4 +1,4 @@
-## TO-DO List : React Assignment - Module 5
+## REACT FINAL ASSIGNMENT
 
 ## Project setup
 
